@@ -21,5 +21,9 @@ public class TensRule implements GameRules {
 		
 		return false;
 	}
-
+	
+	public static void askQuestion() {
+		System.out.println("Would you like to include the Tens rule? (Y/N) : ");
+	}
+	
 }

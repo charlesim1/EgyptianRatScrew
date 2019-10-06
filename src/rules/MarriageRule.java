@@ -2,7 +2,7 @@ package rules;
 
 import cards.Deck;
 
-public class Marriage implements GameRules {
+public class MarriageRule implements GameRules {
 
 	@Override
 	public boolean canSlap(Deck currentDeck) {
@@ -19,6 +19,10 @@ public class Marriage implements GameRules {
 		}
 		
 		return false;
+	}
+	
+	public static void askQuestion() {
+		System.out.println("Would you like to include the Marriage rule? (Y/N) : ");
 	}
 
 }

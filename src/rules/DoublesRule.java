@@ -16,5 +16,5 @@ public class DoublesRule implements GameRules {
 			return true;
 		return false;
 	}
-
+	
 }

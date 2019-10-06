@@ -31,4 +31,9 @@ public class FourInRowRule implements GameRules {
 		}
 		return false;
 	}
+	
+	public static void askQuestion() {
+		System.out.println("Would you like to include the Four in a Row rule? (Y/N) : ");
+	}
+	
 }
