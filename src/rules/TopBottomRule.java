@@ -20,7 +20,7 @@ public class TopBottomRule implements GameRules {
 	}
 	
 	public static void askQuestion() {
-		System.out.println("Would you like to include the Top-Bottom rule? (Y/N) : ");
+		System.out.print("Would you like to include the Top-Bottom rule? (Y/N) : ");
 	}
 	
 }

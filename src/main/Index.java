@@ -15,14 +15,15 @@ public class Index {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		
+		System.out.println("===========================================================================");
+		System.out.println("=======================WELCOME TO EGYPTIAN RAT SLAP!=======================");
+		System.out.println("===========================================================================\n");
+		
 		System.out.print("How many computers do you wish to play with? (can select between 1 - 3) : ");
 		int numComputers = input.nextInt();
 		
-		System.out.print("\nWhat difficulty do you want to play with? (1 being the easiest and 5 being the hardest: "); 
+		System.out.print("\nWhat difficulty do you want to play with? (1 being the easiest and 5 being the hardest): "); 
 		int difficulty = input.nextInt();
-		
-		
-		
 		
 		GameRules[] allowedRules = ruleOptions();
 		
@@ -38,22 +39,22 @@ public class Index {
 		
 		String userInput = "";
 		
-		System.out.println("\n The next questions will ask you for which rules you want to play by.");
-		System.out.println("(The Doubles rule is selected as default)");
+		System.out.println("\nThe next questions will ask you for which rules you want to play by. ");
+		System.out.println("              (The Doubles rule is selected as default)             \n");
 		
 		Scanner input = new Scanner(System.in);
 		
 		while (true) {
-			FourInRowRule.askQuestion(); 
-			userInput = (input.next().toLowerCase());
-			if (userInput != "y" || userInput != "n") {
+			FourInRowRule.askQuestion();
+			userInput = (input.nextLine().toLowerCase());
+			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
 				if (userInput == "y") {
 					numRules += 1;
-					ruleDecisions[1] = true;
+					ruleDecisions[2] = true;
 				} else {
-					ruleDecisions[1] = false;
+					ruleDecisions[2] = false;
 				}
 			}
 			break;
@@ -61,8 +62,8 @@ public class Index {
 		
 		while (true) {
 			MarriageRule.askQuestion();
-			userInput = (input.next().toLowerCase());
-			if (userInput != "y" || userInput != "n") {
+			userInput = (input.nextLine().toLowerCase());
+			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
 				if (userInput == "y") {
@@ -77,8 +78,8 @@ public class Index {
 		
 		while (true) {
 			SandwichRule.askQuestion();
-			userInput = (input.next().toLowerCase());
-			if (userInput != "y" || userInput != "n") {
+			userInput = (input.nextLine().toLowerCase());
+			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
 				if (userInput == "y") {
@@ -93,8 +94,8 @@ public class Index {
 		
 		while (true) {
 			TensRule.askQuestion();
-			userInput = (input.next().toLowerCase());
-			if (userInput != "y" || userInput != "n") {
+			userInput = (input.nextLine().toLowerCase());
+			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
 				if (userInput == "y") {
@@ -109,8 +110,8 @@ public class Index {
 		
 		while (true) {
 			TopBottomRule.askQuestion();
-			userInput = (input.next().toLowerCase());
-			if (userInput != "y" || userInput != "n") {
+			userInput = (input.nextLine().toLowerCase());
+			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
 				if (userInput == "y") {
@@ -122,6 +123,8 @@ public class Index {
 			}
 			break;
 		}
+		
+		input.close();
 		
 		GameRules[] selectedRules = new GameRules[numRules];
 		

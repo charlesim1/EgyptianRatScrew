@@ -19,7 +19,7 @@ public class SandwichRule implements GameRules {
 	}
 	
 	public static void askQuestion() {
-		System.out.println("Would you like to include the Sandwich rule? (Y/N) : ");
+		System.out.print("Would you like to include the Sandwich rule? (Y/N) : ");
 	}
 	
 }

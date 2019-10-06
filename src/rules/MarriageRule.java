@@ -17,12 +17,10 @@ public class MarriageRule implements GameRules {
 		if (card1 == 11 && card2 == 12 || card1 == 12 && card2 == 11) {
 			return true;
 		}
-		
 		return false;
 	}
 	
 	public static void askQuestion() {
-		System.out.println("Would you like to include the Marriage rule? (Y/N) : ");
+		System.out.print("Would you like to include the Marriage rule? (Y/N) : ");
 	}
-
 }
