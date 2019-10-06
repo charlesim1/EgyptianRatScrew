@@ -98,9 +98,17 @@ public class Deck {
 	}
 	
 	
-	public Deck split(int numCards) {
-		Deck splitDeck = new Deck();
-		for (int i = 0; i < numCards; i += 1) {
+	public Deck split(int numCards, int numPlayers) {
+		Deck splitDeck = new Deck(); // Deck to return, containing the new split cards
+		
+		int cardsToGive = numCards / numPlayers;
+		
+		// In the case where the number of players is three and the cards can't be distributed
+		// evenly, the extra card is given to the player.
+		if (numPlayers == 3 && this.currentDeck.size() == 18)
+			cardsToGive += 1;
+		
+		for (int i = 0; i < cardsToGive; i += 1) {
 			Card temp = currentDeck.remove();
 			splitDeck.add(temp);
 		}
