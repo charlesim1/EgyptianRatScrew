@@ -27,6 +27,11 @@ public class Deck {
 	}
 	
 	/*
+	 * Default constructor
+	 */
+	public Deck() {}
+
+	/*
 	 * Shuffles the existing deck in this object. 
 	 */
 	private void shuffle() {
@@ -84,4 +89,21 @@ public class Deck {
 		return currentDeck.getLast();
 	}
 	
+	public Card remove() {
+		return currentDeck.remove();
+	}
+	
+	public void add(Card c) {
+		currentDeck.add(c);
+	}
+	
+	
+	public Deck split(int numCards) {
+		Deck splitDeck = new Deck();
+		for (int i = 0; i < numCards; i += 1) {
+			Card temp = currentDeck.remove();
+			splitDeck.add(temp);
+		}
+		return splitDeck;
+	}
 }
