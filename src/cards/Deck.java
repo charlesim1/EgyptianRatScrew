@@ -1,0 +1,87 @@
+package cards;
+
+import java.util.LinkedList;
+import java.util.Random;
+
+public class Deck {
+	private final String[] COLORS = { "RED", "BLACK" };
+	
+	// Ace is expressed as 1, Jack as 11, Queen as 12, and King as 13.
+	private final int[] RANK = { 1, 2, 3, 4, 
+									5, 6, 7, 8, 
+									9, 10, 11, 12, 13 };
+	private final String[] SUIT = { "CLUBS", "DIAMONDS", "HEARTS", "SPADES" };
+	
+	// this is a doubly linked list of the current cards in the deck
+	private LinkedList<Card> currentDeck = new LinkedList<>();
+	
+	/*
+	 * The default constructor initializes a full, shuffled deck
+	 */
+	public Deck(String descriptor) {
+		if (descriptor.contentEquals("empty")) {
+			return;
+		} else {
+			shuffle();
+		}
+	}
+	
+	/*
+	 * Shuffles the existing deck in this object. 
+	 */
+	private void shuffle() {
+		Random rand = new Random();
+		int[] nums = new int[52];
+		
+		for (int i = 0; i < 52; i += 1) {
+			nums[i] = i;
+		}
+		
+		// using Fisher-Yates algorithm
+		for (int i = 0; i < 52; i += 1) {
+			int randomNum =	 i + (rand.nextInt(52 - i));
+			int temp = nums[randomNum];
+			nums[randomNum] = nums[i];
+			nums[i] = temp;
+		}
+		
+		// adding shuffled cards into the deck
+		for (int i : nums) {
+			if (i < 13) {
+				currentDeck.add(new Card(COLORS[1], RANK[i], SUIT[0]));
+				continue;
+			} else if (i < 26 && i >= 13) {
+				currentDeck.add(new Card(COLORS[0], RANK[i - 13], SUIT[1]));
+				continue;
+			} else if (i < 39 && i >= 26) {
+				currentDeck.add(new Card(COLORS[0], RANK[i - 26], SUIT[2]));
+				continue;
+			} else {
+				currentDeck.add(new Card(COLORS[1], RANK[i - 39], SUIT[3]));
+				continue;
+			}
+		}
+	}
+	
+	public void printDeck() {
+		for (Card c : currentDeck) {
+			System.out.println(c.color + " " + c.rank + " " + c.suit);
+		}
+	}
+	
+	/*
+	 * Returns the size of the deck.
+	 */
+	public int size() {
+		return currentDeck.size();
+	}
+	
+	public Card get(int index) {
+		return currentDeck.get(index);
+	}
+	
+	public Card getLast() {
+		return currentDeck.getLast();
+	}
+	
+}
