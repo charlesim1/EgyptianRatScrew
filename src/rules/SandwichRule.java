@@ -6,7 +6,15 @@ public class SandwichRule implements GameRules {
 
 	@Override
 	public boolean canSlap(Deck currentDeck) {
-		// TODO Auto-generated method stub
+		if (currentDeck.size() < 3) {
+			return false;
+		}
+		int card1 = currentDeck.get(0).rank;
+		int card2 = currentDeck.get(2).rank;
+		
+		if (card1 == card2) {
+			return true;
+		}
 		return false;
 	}
 
