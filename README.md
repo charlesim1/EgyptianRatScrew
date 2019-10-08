@@ -1,7 +1,8 @@
 # EgyptianRatScrew
 Submission for the 2020 Kleiner Perkins Fellows Program. 
-NOTE: PLEASE RUN THE CODE INSIDE THE "EgyptionRatScrew" FOLDER
-PLEASE DISREGARD THE "src" FOLDER!!!
+
+NOTE: PLEASE RUN THE CODE INSIDE THE "EgyptionRatScrew" FOLDER   
+NOTE: PLEASE DISREGARD THE "src" FOLDER!!!   
 ### Running the Code
 ```
 $ javac -sourcepath src -d bin src/**/*.java
