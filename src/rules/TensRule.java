@@ -9,8 +9,9 @@ public class TensRule implements GameRules {
 		if (currentDeck.size() < 2) {
 			return false;
 		}
-		int card1 = currentDeck.get(0).rank;
-		int card2 = currentDeck.get(1).rank;
+		int size = currentDeck.size();
+		int card1 = currentDeck.get(size - 1).rank;
+		int card2 = currentDeck.get(size - 2).rank;
 		
 		if (card1 == 1 || card2 == 1) {
 			return false;

@@ -1,8 +1,9 @@
 package players;
 
+import cards.Card;
 import cards.Deck;
 
-public class Computer implements Runnable{
+public class Computer {
 	public Deck computerDeck;
 	
 	public Computer(Deck computerCards) {
@@ -11,9 +12,9 @@ public class Computer implements Runnable{
 	
 	public Computer() {}
 	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
+	public Card playCard() {
+		Card c = computerDeck.remove();
+		return c;
 	}
+
 }

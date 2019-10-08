@@ -1,5 +1,6 @@
 package main;
 
+
 import java.util.Scanner;
 
 import game.EgyptianRatScrew;
@@ -14,25 +15,42 @@ import rules.TopBottomRule;
 public class Index {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		System.out.println("===========================================================================");
+		System.out.println("====================== WELCOME TO EGYPTIAN RAT SLAP! ======================");
+		System.out.println("===========================================================================\n");
+		System.out.println("In this game, enter any key to put a card down and");
+		System.out.println("enter 's' to slap the deck. Best of luck!");
+		
+		int difficulty = 0;
+		while (true) {
+			System.out.print("\nWhat difficulty (1 - 5) do you wish to play with? (1 being the easiest and 5 being the hardest): "); 
+			String temp = input.next();
+			try {
+				if (Integer.parseInt(temp) >= 0 && Integer.parseInt(temp) <= 5) {
+					difficulty = Integer.parseInt(temp);
+					break;
+				} else {
+					continue;
+				}
+			} catch (Exception e) { 
+				continue; 
+			}
+		}
+		
+		GameRules[] allowedRules = ruleOptions(input);
+
+		EgyptianRatScrew game = new EgyptianRatScrew(difficulty, allowedRules);
+		game.start(input);
 		
 		System.out.println("===========================================================================");
-		System.out.println("=======================WELCOME TO EGYPTIAN RAT SLAP!=======================");
+		System.out.println("====================== THANK YOU FOR PLAYING MY GAME ======================");
 		System.out.println("===========================================================================\n");
-		
-		System.out.print("How many computers do you wish to play with? (can select between 1 - 3) : ");
-		int numComputers = input.nextInt();
-		
-		System.out.print("\nWhat difficulty do you want to play with? (1 being the easiest and 5 being the hardest): "); 
-		int difficulty = input.nextInt();
-		
-		GameRules[] allowedRules = ruleOptions();
-		
-		EgyptianRatScrew game = new EgyptianRatScrew(numComputers, difficulty, allowedRules);
-		
-		game.start();
 	}
 	
-	public static GameRules[] ruleOptions() {
+	/*
+	 * This funciton presents the options of choosing the different rules. 
+	 */
+	public static GameRules[] ruleOptions(Scanner input) {
 		int numRules = 1; // There is one enabled rule as the default (which is the doubles rule)
 		boolean[] ruleDecisions = new boolean[6];
 		ruleDecisions[0] = true;
@@ -42,19 +60,18 @@ public class Index {
 		System.out.println("\nThe next questions will ask you for which rules you want to play by. ");
 		System.out.println("              (The Doubles rule is selected as default)             \n");
 		
-		Scanner input = new Scanner(System.in);
-		
+		input.nextLine();
 		while (true) {
 			FourInRowRule.askQuestion();
 			userInput = (input.nextLine().toLowerCase());
 			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
-				if (userInput == "y") {
+				if (userInput.contentEquals("y")) {
 					numRules += 1;
-					ruleDecisions[2] = true;
+					ruleDecisions[1] = true;
 				} else {
-					ruleDecisions[2] = false;
+					ruleDecisions[1] = false;
 				}
 			}
 			break;
@@ -66,7 +83,7 @@ public class Index {
 			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
-				if (userInput == "y") {
+				if (userInput.contentEquals("y")) {
 					numRules += 1;
 					ruleDecisions[2] = true;
 				} else {
@@ -82,7 +99,7 @@ public class Index {
 			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
-				if (userInput == "y") {
+				if (userInput.contentEquals("y")) {
 					numRules += 1;
 					ruleDecisions[3] = true;
 				} else {
@@ -98,7 +115,7 @@ public class Index {
 			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
-				if (userInput == "y") {
+				if (userInput.contentEquals("y")) {
 					numRules += 1;
 					ruleDecisions[4] = true;
 				} else {
@@ -114,7 +131,7 @@ public class Index {
 			if ( !userInput.equals("y") && !userInput.equals("n") ) {
 				continue;
 			} else {
-				if (userInput == "y") {
+				if (userInput.contentEquals("y")) {
 					numRules += 1;
 					ruleDecisions[5] = true;
 				} else {
@@ -123,9 +140,6 @@ public class Index {
 			}
 			break;
 		}
-		
-		input.close();
-		
 		GameRules[] selectedRules = new GameRules[numRules];
 		
 		selectedRules[0] = new DoublesRule();
@@ -150,7 +164,8 @@ public class Index {
 			selectedRules[count] = new TopBottomRule();
 			count += 1;
 		}
-		
+
+		System.out.println();
 		return selectedRules;
 	}
 }

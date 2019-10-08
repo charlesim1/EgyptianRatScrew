@@ -10,11 +10,11 @@ public class MarriageRule implements GameRules {
 		if (currentDeck.size() < 2) {
 			return false;
 		}
+		int size = currentDeck.size();
+		int card1 = currentDeck.get(size - 1).rank;
+		int card2 = currentDeck.get(size - 2).rank;
 		
-		int card1 = currentDeck.get(0).rank;
-		int card2 = currentDeck.get(1).rank;
-		
-		if (card1 == 11 && card2 == 12 || card1 == 12 && card2 == 11) {
+		if (card1 == 12 && card2 == 13 || card1 == 13 && card2 == 12) {
 			return true;
 		}
 		return false;

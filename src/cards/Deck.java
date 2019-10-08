@@ -10,7 +10,7 @@ public class Deck {
 	private final int[] RANK = { 1, 2, 3, 4, 
 									5, 6, 7, 8, 
 									9, 10, 11, 12, 13 };
-	private final String[] SUIT = { "CLUBS", "DIAMONDS", "HEARTS", "SPADES" };
+	private final String[] SUIT = { "\u2663", "\u2666", "\u2665", "\u2660" };
 	
 	// this is a doubly linked list of the current cards in the deck
 	private LinkedList<Card> currentDeck = new LinkedList<>();
@@ -70,7 +70,18 @@ public class Deck {
 	
 	public void printDeck() {
 		for (Card c : currentDeck) {
-			System.out.println(c.color + " " + c.rank + " " + c.suit);
+			System.out.print(c.color + " ");
+			if (c.rank == 1) {
+				System.out.print("A " + c.suit + "\n");
+			} else if (c.rank == 11) {
+				System.out.print("J " + c.suit + "\n");
+			} else if (c.rank == 12) {
+				System.out.print("Q " + c.suit + "\n");
+			} else if (c.rank == 13) {
+				System.out.print("K " + c.suit + "\n");
+			} else {
+				System.out.println(c.rank + " " + c.suit);
+			}
 		}
 	}
 	
@@ -94,7 +105,26 @@ public class Deck {
 	}
 	
 	public void add(Card c) {
-		currentDeck.add(c);
+		currentDeck.addLast(c);
+	}
+	
+	public void addFirst(Card c) {
+		currentDeck.addFirst(c);
+	}
+	
+	public void addLast(Card c) {
+		currentDeck.addLast(c);
+	}
+	
+	public Card removeLast() {
+		return currentDeck.removeLast();
+	}
+	
+	/*
+	 * Returns the number value of the card. 
+	 */
+	public int peekRank() {
+		return currentDeck.peek().rank;
 	}
 	
 	

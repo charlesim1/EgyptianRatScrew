@@ -1,27 +1,19 @@
 package players;
 
+import java.util.Scanner;
+
+import cards.Card;
 import cards.Deck;
 
-public class User implements Runnable{
+public class User {
 	public Deck userDeck;
 	
 	public User(Deck userCards) {
 		userDeck = userCards;
 	}
 	
-	
-	public void setCard() {
-		
+	public Card playCard() {
+		Card c = userDeck.remove();
+		return c;
 	}
-	
-	public boolean slap() {
-		return true;
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

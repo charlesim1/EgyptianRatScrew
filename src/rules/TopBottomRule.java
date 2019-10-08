@@ -9,7 +9,6 @@ public class TopBottomRule implements GameRules {
 		if (currentDeck.size() < 2) {
 			return false;
 		}
-
 		int top = currentDeck.get(0).rank;
 		int bot = currentDeck.getLast().rank;
 		

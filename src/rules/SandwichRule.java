@@ -9,8 +9,9 @@ public class SandwichRule implements GameRules {
 		if (currentDeck.size() < 3) {
 			return false;
 		}
-		int card1 = currentDeck.get(0).rank;
-		int card2 = currentDeck.get(2).rank;
+		int size = currentDeck.size();
+		int card1 = currentDeck.get(size - 1).rank;
+		int card2 = currentDeck.get(size - 3).rank;
 		
 		if (card1 == card2) {
 			return true;
