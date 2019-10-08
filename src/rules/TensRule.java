@@ -23,7 +23,7 @@ public class TensRule implements GameRules {
 	}
 	
 	public static void askQuestion() {
-		System.out.print("Would you like to include the Tens rule? (Y/N) : ");
+		System.out.println("Would you like to include the Tens rule? (Y/N) : ");
 	}
 	
 }
