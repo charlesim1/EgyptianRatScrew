@@ -1,5 +1,4 @@
 # EgyptianRatScrew
-Submission for the 2020 Kleiner Perkins Fellows Program. 
 
 NOTE: PLEASE RUN THE CODE INSIDE THE "EgyptionRatScrew" FOLDER   
 NOTE: PLEASE DISREGARD THE "src" FOLDER!!!   
